@@ -1,25 +1,48 @@
-import logo from './logo.svg';
+import React from 'react';
+import { getUsers } from './Utils/Utils';
+import Users from './Components/Users/Users';
+import Loading from './Components/Loading/Loading';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  
+  constructor(){
+    super();
+    this.state = {
+      users: [],
+      isLoading: true
+    }
+  }
+
+  getUsers = async () => {
+    const users = await getUsers();
+    this.setState({
+      users: users,
+      isLoading: false
+    }/*, () => {
+      console.log(this.state)
+    }*/)
+  }
+
+  componentDidMount(){
+    if (this.state.isLoading)
+      this.getUsers();
+  }
+
+  render(){
+    return (
+     <div className='container'>
+        {
+          this.state.isLoading ? 
+          <Loading />
+          :
+          <Users users={this.state.users} />
+        }
+
+     </div>
+    );
+  }
+
 }
 
 export default App;

@@ -1,0 +1,67 @@
+.usersContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    margin: 5em 0;
+}
+
+.listContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 1em;
+}
+
+.usersList{
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+.listHeader{
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-weight: bold;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 1em;
+}
+
+li{
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 0.5em;
+    width: 20rem;
+    height: 3rem;
+}
+
+.listItem{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.deleteBtn{
+    padding: 1em;
+    border-radius: 0.2rem;
+    border: none;
+    box-shadow: 1px 0 1px 1px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.deleteBtn:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
