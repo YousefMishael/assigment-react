@@ -9,7 +9,7 @@ function Users(props) {
         setUsers(users.slice(0, users.length-1))
       }
   }
-
+  // console.log(users)
   return (
     <div className='usersContainer'>
         <div className='listContainer'>
