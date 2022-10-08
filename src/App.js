@@ -54,7 +54,8 @@ class App extends React.Component {
         // }
         // console.log(filteredUsers)
 
-        for (let i=0, z=users.length-1; i<parseInt(users.length/2); i++){
+        for (let i=0, z=users.length-1; i<parseInt(users.length/2); i++){//filter with create one object contains two arrays instead of creating new two arrays
+          /*Add users to separated arrays inside object by using two pointers (one starts from start and the second starts from end to loop faster over array) */
           if(!filteredUsers.names.includes(users[i].name.first))
             filteredUsers.names.push(users[i].name.first)
           if(!filteredUsers.ages.includes(users[i].dob.age))
@@ -63,11 +64,36 @@ class App extends React.Component {
             filteredUsers.names.push(users[z].name.first)
           if(!filteredUsers.ages.includes(users[z].dob.age))
             filteredUsers.ages.push(users[z].dob.age)
-          z--;
+          z--;//next element for pointer started from end
         }
+
+        /* Another Way */
+        // let names = [];
+        // let ages = [];
+        // let scannedUsers = []
+
+        // users.forEach(user => {
+        //   if (!scannedUsers.includes(user.name.first)){
+        //     names.push(user.name.first)
+        //   }
+        //   if (!scannedUsers.includes(user.dob.age)){
+        //     ages.push(user.dob.age)
+        //   }
+        //   scannedUsers.push(user.name.first);
+        //   scannedUsers.push(user.dob.age);
+        // });
+
+        // return {
+        //   names,
+        //   ages
+        // }
+
         return filteredUsers;
     }
-    return {};
+    return {
+      names: [],
+      ages: []
+    };
   }
 
   getUsers = async () => {

@@ -6,7 +6,7 @@ function Users(props) {
 
   const deleteUser = () => {
         setUsers({
-          names: users.names.slice(0, users.names.length-1),
+          names: users.names.slice(0, users.names.length-1),//to make delete operation without declaring new variable we used slice function. with pop function we need to declare new variable because the returned value from pop is the removed element
           ages: users.ages.slice(0, users.ages.length-1)
         }) 
   }
