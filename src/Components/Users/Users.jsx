@@ -5,11 +5,11 @@ function Users(props) {
   const [users, setUsers] = useState(props.users);
 
   const deleteUser = () => {
-      if (users.length>0){
-        setUsers(users.slice(0, users.length-1))
-      }
+        setUsers({
+          names: users.names.slice(0, users.names.length-1),
+          ages: users.ages.slice(0, users.ages.length-1)
+        }) 
   }
-  // console.log(users)
   return (
     <div className='usersContainer'>
         <div className='listContainer'>
@@ -17,7 +17,7 @@ function Users(props) {
                 <span className='listHeader'>Users</span>
                 <ul>
                   {
-                    users.map((user, index) => <li key={index}><span className='listItem' />{user.name.title} {user.name.first} {user.name.last}</li>)
+                    users.names.map((user, index) => <li key={index}><span className='listItem' />{user}</li>)
                   }
                   
                 </ul>
@@ -26,7 +26,7 @@ function Users(props) {
                 <span className='listHeader'>Ages</span>
                 <ul>
                   {
-                    users.map((user, index) => <li key={index}>{user.dob.age}</li>)
+                    users.ages.map((age, index) => <li key={index}>{age}</li>)
                   }
                   
                 </ul>
@@ -39,7 +39,10 @@ function Users(props) {
 }
 
 Users.defaultProps = {
-  users: []
+  users: {
+    names: [],
+    ages: []
+  }
 }
 
 export default Users;
